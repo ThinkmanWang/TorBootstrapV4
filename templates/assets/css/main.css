@@ -3132,7 +3132,7 @@ body.fixed-layout.sidebar-mini .content-wrapper {
   background-color: #f2f2f2;
   background-color: #f1f1f1;
   margin-left: 220px;
-  padding: 0 15px 60px 15px;
+  padding: 0 0px 0px 0px;
   -webkit-transition: margin .2s ease-in-out;
   -o-transition: margin .2s ease-in-out;
   transition: margin .2s ease-in-out;
@@ -3143,7 +3143,7 @@ body.fixed-layout.sidebar-mini .content-wrapper {
   padding-bottom: 20px; }
 
 .page-content {
-  padding-top: 20px; }
+  padding-top: 0px; }
 
 .page-heading {
   padding: 0 5px; }
