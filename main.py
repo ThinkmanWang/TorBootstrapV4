@@ -17,7 +17,7 @@ from tornado.platform.asyncio import AsyncIOMainLoop
 import asyncio
 
 from pythinkutils.common.log import g_logger
-from pythinkutils.aio.auth.tornado.handler.BaseSimpleAuthHandler import *
+from pythinkutils.aio.auth.tornado.handler.BaseSimpleAuthHandler import BaseAuthHandler
 from pythinkutils.common.StringUtils import *
 
 from handler.MainHandler import MainHandler
@@ -38,7 +38,8 @@ application = tornado.web.Application(
     , autoreload=False)
 
 async def on_server_started():
-    g_logger.info("Server Started!")
+    from pythinkutils.aio.common.aiolog import g_aio_logger
+    await g_aio_logger.info("Server Started!")
 
 if __name__ == '__main__':
 

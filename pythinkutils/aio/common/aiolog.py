@@ -36,7 +36,7 @@ def setup_custom_logger():
         when=RolloverInterval.HOURS,
         backup_count=48,
     )
-    formatter = logging.Formatter("[%(asctime)s] %(threadName)s - %(pathname)s %(funcName)s():%(lineno)d  %(levelname)s %(message)s")
+    formatter = logging.Formatter("[%(asctime)s] %(threadName)s - %(pathname)s %(funcName)s():%(lineno)d  [%(levelname)s] \t%(message)s")
     handler.formatter = formatter
 
     logger = Logger.with_default_handlers(formatter=formatter)

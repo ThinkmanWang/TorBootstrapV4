@@ -132,7 +132,7 @@ def setup_custom_logger():
 
     LOG_FILE = "{0}/{1}".format(LOG_PATH, "thinklog")
 
-    formatter = logging.Formatter("[%(asctime)s] %(threadName)s - %(pathname)s %(funcName)s():%(lineno)d  %(levelname)s \t%(message)s")  # same as default
+    formatter = logging.Formatter("[%(asctime)s] %(threadName)s - %(pathname)s %(funcName)s():%(lineno)d  [%(levelname)s] \t%(message)s")  # same as default
     # formatter = logging.Formatter('%(asctime)s [%(pathname)s: %(lineno)d] %(levelname)s %(message)s')
 
     logger = logging.getLogger()
