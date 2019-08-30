@@ -17,8 +17,6 @@
     <link href='assets/css/themes/blue.css' rel='stylesheet' id='theme-style' >
     <!-- PAGE LEVEL STYLES-->
 
-
-
 </head>
 
 <body class="fixed-navbar">
@@ -303,6 +301,28 @@
     <script src="assets/js/app.min.js" type="text/javascript"></script>
     <!-- PAGE LEVEL SCRIPTS-->
     <script src="assets/js/scripts/dashboard_1_demo.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        function onResize() {
+            var nHeaderHeight = $("header").height();
+            var nFooterHeight = $("footer").height();
+            var nContentHeight = $(window).height();
+
+
+            console.log(nContentHeight);
+            $(".content-wrapper").css("height", nContentHeight + "px");
+            // $("div").css("height", "300px");
+        }
+
+        $(window).resize(function () {
+            onResize();
+        });
+
+        $(document).ready(function () {
+            onResize();
+        })
+    </script>
 </body>
 
 </html>
