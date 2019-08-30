@@ -338,40 +338,13 @@
                     </ul>
 
                     <div id="tab-content-main">
-                        <iframe src="https://www.baidu.com" width="100%" height="100%"
+                        <iframe src="http://news.baidu.com" width="100%" height="100%"
                                 scrolling="yes" frameborder="no" border="0" marginwidth="0" marginheight="0"
                                 allowtransparency="yes"></iframe>
                     </div>
 
                 </div>
                 <div id="tab_content" style="display: none;">
-                    <div class="tabs-menu1">
-                    </div>
-                    <div class="tabs-menu-user-manage">
-                    </div>
-                    <div class="tabs-menu-sms-manage">
-                    </div>
-                    <div class="tabs-menu-sms-empty-phone-check">
-                    </div>
-                    <div class="tabs-menu-sms-template">
-                    </div>
-                    <div class="tabs-menu-sms-signature">
-                    </div>
-                    <div class="tabs-menu-static-sms-task">
-                    </div>
-                    <div class="tabs-menu-dynamic-sms-task">
-                    </div>
-                    <div class="tabs-menu-sms-task-list">
-                    </div>
-
-                    <div class="tabs-menu-sms-date-statistic">
-                    </div>
-                    <div class="tabs-menu-sms-template-statistic">
-                    </div>
-                    <div class="tabs-menu-sms-signature-statistic">
-                    </div>
-                    <div class="tabs-menu-sms-detail-statistic">
-                    </div>
 
                 </div>
 
@@ -420,6 +393,8 @@
 
             // console.log(nContentHeight);
             $(".content-wrapper").css("height", nContentHeight + "px");
+
+            $("#tabs-main").find("iframe").css("height", ($(window).height() - $("header").height() - $("footer").height()) + "px")
         }
 
         $(window).resize(function () {
