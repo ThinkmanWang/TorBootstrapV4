@@ -14,4 +14,4 @@ class MainHandler(BaseSimpleAuthHandler):
 
     # @page_login_required()
     async def get(self):
-        self.render("index.html")
+        self.render("general/index.html")
