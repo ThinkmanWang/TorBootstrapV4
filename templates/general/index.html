@@ -145,7 +145,7 @@
                         <div class="font-strong">James Brown</div><small>Administrator</small></div>
                 </div>
                 <ul class="side-menu metismenu">
-                    <li>
+                    <li id="menu-content-main" class="nav-item">
                         <a class="active" href="#"><i class="sidebar-item-icon fa fa-th-large"></i>
                             <span class="nav-label">首页</span>
                         </a>
@@ -153,10 +153,10 @@
                     <!--<li class="heading">FEATURES</li>-->
                     <li>
                         <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
-                            <span class="nav-label">Basic UI</span><i class="fa fa-angle-left arrow"></i></a>
+                            <span class="nav-label">系统管理</span><i class="fa fa-angle-left arrow"></i></a>
                         <ul class="nav-2-level collapse">
-                            <li>
-                                <a href="colors.html">Colors</a>
+                            <li id="menu-content-mop" class="nav-item">
+                                <a href="#">猫扑</a>
                             </li>
                             <li>
                                 <a href="typography.html">Typography</a>
@@ -345,7 +345,11 @@
 
                 </div>
                 <div id="tab_content" style="display: none;">
-
+                    <div class="tab-content-mop">
+                        <iframe src="https://tieba.baidu.com/index.html" width="100%" height="100%"
+                                scrolling="yes" frameborder="no" border="0" marginwidth="0" marginheight="0"
+                                allowtransparency="yes"></iframe>
+                    </div>
                 </div>
 
             </div>
@@ -409,10 +413,56 @@
             $("#tabs-main").tabs();
             var tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='fa fa-times-circle'></span></li>";
 
+            $('li.nav-item').click(function () {
+                console.log("li .nav-item click");
+                if ("" === this.id) {
+                    $("#tabs-main").tabs('option', 'active', 0);
+                    return;
+                }
+                //获取tabs下a[href]的值
+                var id = "#tab-" + this.id.replace("menu-", "");
+                console.log(id);
+                //tabs初始化时就有一个li,所以要减1，添加时index会返回-1，再减1变为-2，可根据实际情况而定。这里实际上是通过Id定位#id所在li的位置，然后设置active
+                var index = $("#tabs-main").find(id).index() - 1;
+                $("#tabs-main").tabs('option', 'active', index);
+                if (index == -2) {
+                    addTab(this.innerText, id);
+                }
+
+            });
+
+            function switchTab(tabTitle, id) {
+                var index = $("#tabs-main").find("#tab-" + id).index() - 1;
+                $("#tabs-main").tabs('option', 'active', index);
+                if (index == -2) {
+                    addTab(tabTitle, id);
+                }
+            }
+
+            function addTab(tabTitle, id) {
+                var label = tabTitle,
+                    id = id.replace("#", ""),
+                    li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
+                var tabContentHtml = $("." + id).html();
+                var existing = $("#tabs-main").find("[id='" + id + "']");
+                if (existing.length == 0) {
+                    $("#tabs-main").find(".ui-tabs-nav").append(li);
+                    $("#tabs-main").append("<div id='" + id + "'><p>" + tabContentHtml + "</p></div>");
+                    $("#tabs-main").tabs("refresh");
+                }
+
+                var index = $("#tabs-main").find('.ui-tabs-nav li').index(existing);
+                //添加时总是返回-1
+                $("#tabs-main").tabs('option', 'active', index);
+
+                onResize();
+            }
+
+            // close icon: removing the tab on click
             $("#tabs-main").on("click", 'span.fa-times-circle', function () {
                 var panelId = $(this).closest("li").remove().attr("aria-controls");
                 $("#" + panelId).remove();
-                tabs.tabs("refresh");
+                $("#tabs-main").tabs("refresh");
             });
         }
 
