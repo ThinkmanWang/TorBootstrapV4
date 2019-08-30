@@ -12,6 +12,6 @@ class MainHandler(BaseSimpleAuthHandler):
     def func_test(cls):
         return "TEEEEEEEST FXXXXXXXXXXXXXXXK"
 
-    @page_login_required()
+    # @page_login_required()
     async def get(self):
         self.render("index.html")
