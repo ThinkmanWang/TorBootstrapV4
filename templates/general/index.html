@@ -445,7 +445,7 @@
             var existing = $("#tabs-main").find("[id='" + id + "']");
             if (existing.length == 0) {
                 $("#tabs-main").find(".ui-tabs-nav").append(li);
-                $("#tabs-main").append("<div id='" + id + "'><p>" + tabContentHtml + "</p></div>");
+                $("#tabs-main").append("<div id='" + id + "'>" + tabContentHtml + "</div>");
                 $("#tabs-main").tabs("refresh");
             }
 
